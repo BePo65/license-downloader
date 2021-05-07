@@ -7,21 +7,17 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Mocha Tests",
+      "name": "Mocha All Files",
       "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
       "args": [
-        "--require",
-        "esm",
-        "--require",
-        "${workspaceFolder}/test/your-setup.js",
-        "--reporter",
-        "dot",
-        "--slow",
-        "5000",
+        "--timeout",
+        "999999",
         "--colors",
-        "${workspaceFolder}/test/**/*.spec.js",
+        "${workspaceFolder}/test",
       ],
-      "stopOnEntry": true
+      "skipFiles": [
+        "<node_internals>/**/*.js"
+      ]
     },
     {
         "type": "node",
@@ -34,7 +30,6 @@
             "--colors",
             "${file}"
         ],
-        "console": "integratedTerminal",
         "skipFiles": [
             "<node_internals>/**/*.js"
         ]
@@ -46,7 +41,14 @@
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}\\index.js"
+      "program": "${workspaceFolder}\\index.js",
+      "args": [
+        "--source",
+        "${workspaceFolder}/test/test-data/license-report.json",
+        "--licDir",
+        "d:\\xx",
+        "--download"
+      ]
     }
   ]
 }
