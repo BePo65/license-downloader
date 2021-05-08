@@ -112,7 +112,7 @@ describe('web-service', () => {
 
       await WebService.downloadLicenseFiles(packagesInfos, tempDirName);
 
-      const fileDownloaded = fs.existsSync(path.join(tempDirName, 'debug@4.3.1-LICENSE'));
+      const fileDownloaded = fs.existsSync(path.join(tempDirName, 'debug.LICENSE.txt'));
       expect(fileDownloaded, 'license for package downloaded').to.be.true;  // eslint-disable-line no-unused-expressions
     });
 
@@ -128,7 +128,7 @@ describe('web-service', () => {
 
       await WebService.downloadLicenseFiles(packagesInfos, tempDirName);
 
-      const fileDownloaded = fs.existsSync(path.join(tempDirName, '@bepo65', 'mat-tristate-checkbox@3.0.0-LICENSE'));
+      const fileDownloaded = fs.existsSync(path.join(tempDirName, '@bepo65', 'mat-tristate-checkbox.LICENSE.txt'));
       expect(fileDownloaded, 'license for scoped package downloaded').to.be.true;  // eslint-disable-line no-unused-expressions
     });
   });

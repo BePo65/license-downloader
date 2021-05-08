@@ -103,18 +103,18 @@ describe('util', () => {
   });
 
   describe('licenseFileName', () => {
-    it('should return filename with version', () => {
-      const fileNameComponents = util.licenseFileName('package', '1.2.3');
+    it('should return filename', () => {
+      const fileNameComponents = util.licenseFileName('package');
 
       expect(fileNameComponents.scope).to.equal('');
-      expect(fileNameComponents.packageName).to.equal('package@1.2.3');
+      expect(fileNameComponents.packageName).to.equal('package');
     });
 
-    it('should return scope and filename with version', () => {
-      const fileNameComponents = util.licenseFileName('@test/package-test', '2.3.4');
+    it('should return scope and filename', () => {
+      const fileNameComponents = util.licenseFileName('@test/package-test');
 
       expect(fileNameComponents.scope).to.equal('@test');
-      expect(fileNameComponents.packageName).to.equal('package-test@2.3.4');
+      expect(fileNameComponents.packageName).to.equal('package-test');
     });
   });
 });
