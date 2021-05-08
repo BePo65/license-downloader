@@ -1,22 +1,22 @@
 import path from 'path';
 
 import config from './lib/config.js';
-import { readJson, writeJson } from './lib/filesystem-service.js';
-import { addLicenseFilePath, downloadLicenseFiles } from './lib/github-service.js';
-import { createDirFromFilename, licenseFilesTargetFolder, sourceToTargetFilename } from './lib/util.js';
+import FsService from './lib/filesystem-service.js';
+import WebService from './lib/github-service.js';
+import util from './lib/util.js';
 
 (async () => {
   try {
     const sourceFilename = config.source;
-    const json = await readJson(sourceFilename);
-    await addLicenseFilePath(json, config.httpRetryOptions);
-    const targetFilename = sourceToTargetFilename(sourceFilename, config.licDir);
-    createDirFromFilename(targetFilename);
-    await writeJson(json, targetFilename);
+    const json = await FsService.readJson(sourceFilename);
+    await WebService.addLicenseFilePath(json, config.httpRetryOptions);
+    const targetFilename = util.sourceToTargetFilename(sourceFilename, config.licDir);
+    FsService.createDirFromFilename(targetFilename);
+    await FsService.writeJson(json, targetFilename);
     if (config.download) {
       const sourceDirectory = path.dirname(sourceFilename);
-      const targetDirectory = licenseFilesTargetFolder(config.licDir, sourceDirectory);
-      await downloadLicenseFiles(json, targetDirectory);
+      const targetDirectory = util.licenseFilesTargetFolder(config.licDir, sourceDirectory);
+      await WebService.downloadLicenseFiles(json, targetDirectory);
     }
   } catch (e) {
     console.error(e.message);
