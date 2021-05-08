@@ -11,12 +11,12 @@ import chaiAsPromised from 'chai-as-promised';
 import { expect } from 'chai';
 /* eslint-enable node/no-unpublished-import */
 
-import { addLicenseFilePath, downloadLicenseFiles } from '../lib/github-service.js';
+import WebService from '../lib/web-service.js';
 
 chai.use(chaiAsPromised);
 temp.track();
 
-describe('github-service', () => {
+describe('web-service', () => {
   describe('addLicenseFilePath', () => {
     it('should add link to license file for git uri', async () => {
       const packagesInfos = [
@@ -27,7 +27,7 @@ describe('github-service', () => {
         }
       ];
       const httpRetryOptions = { maxAttempts: 2 };
-      await addLicenseFilePath(packagesInfos, httpRetryOptions);
+      await WebService.addLicenseFilePath(packagesInfos, httpRetryOptions);
 
       expect(packagesInfos).to.be.an('array');
       expect(packagesInfos.length).to.equal(1, `number of entries must be 1, but has ${packagesInfos.length}`);
@@ -45,7 +45,7 @@ describe('github-service', () => {
         }
       ];
       const httpRetryOptions = { maxAttempts: 2 };
-      await addLicenseFilePath(packagesInfos, httpRetryOptions);
+      await WebService.addLicenseFilePath(packagesInfos, httpRetryOptions);
 
       expect(packagesInfos).to.be.an('array');
       expect(packagesInfos.length).to.equal(1, `number of entries must be 1, but has ${packagesInfos.length}`);
@@ -63,7 +63,7 @@ describe('github-service', () => {
         }
       ];
       const httpRetryOptions = { maxAttempts: 2 };
-      await addLicenseFilePath(packagesInfos, httpRetryOptions);
+      await WebService.addLicenseFilePath(packagesInfos, httpRetryOptions);
 
       expect(packagesInfos).to.be.an('array');
       expect(packagesInfos.length).to.equal(1, `number of entries must be 1, but has ${packagesInfos.length}`);
@@ -81,7 +81,7 @@ describe('github-service', () => {
         }
       ];
       const httpRetryOptions = { maxAttempts: 2 };
-      await addLicenseFilePath(packagesInfos, httpRetryOptions);
+      await WebService.addLicenseFilePath(packagesInfos, httpRetryOptions);
 
       expect(packagesInfos).to.be.an('array');
       expect(packagesInfos.length).to.equal(1, `number of entries must be 1, but has ${packagesInfos.length}`);
@@ -110,9 +110,9 @@ describe('github-service', () => {
         }
       ];
 
-      await downloadLicenseFiles(packagesInfos, tempDirName);
+      await WebService.downloadLicenseFiles(packagesInfos, tempDirName);
 
-      const fileDownloaded = fs.existsSync(path.join(tempDirName, 'debug@4.3.1-LICENSE'));0
+      const fileDownloaded = fs.existsSync(path.join(tempDirName, 'debug@4.3.1-LICENSE'));
       expect(fileDownloaded, 'license for package downloaded').to.be.true;  // eslint-disable-line no-unused-expressions
     });
 
@@ -126,9 +126,9 @@ describe('github-service', () => {
         }
       ];
 
-      await downloadLicenseFiles(packagesInfos, tempDirName);
+      await WebService.downloadLicenseFiles(packagesInfos, tempDirName);
 
-      const fileDownloaded = fs.existsSync(path.join(tempDirName, '@bepo65', 'mat-tristate-checkbox@3.0.0-LICENSE'));0
+      const fileDownloaded = fs.existsSync(path.join(tempDirName, '@bepo65', 'mat-tristate-checkbox@3.0.0-LICENSE'));
       expect(fileDownloaded, 'license for scoped package downloaded').to.be.true;  // eslint-disable-line no-unused-expressions
     });
   });

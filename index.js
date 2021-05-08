@@ -2,7 +2,7 @@ import path from 'path';
 
 import config from './lib/config.js';
 import FsService from './lib/filesystem-service.js';
-import WebService from './lib/github-service.js';
+import WebService from './lib/web-service.js';
 import util from './lib/util.js';
 
 (async () => {
