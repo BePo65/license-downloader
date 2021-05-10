@@ -32,7 +32,7 @@ npx license-downloader --source ./license-report.json
 
 The copy of the 'license-report.json' file with properties 'licenseFileLink' added is saved to the directory of the source file.
 
-## debug
+## Show debug log
 
 ```sh
 export DEBUG=license-downloader*
