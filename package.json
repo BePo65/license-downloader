@@ -7,6 +7,9 @@
   "engines": {
     "node": ">=13.2"
   },
+  "files": [
+    "/lib"
+  ],
   "scripts": {
     "lint": "npx eslint -c .eslintrc.json **/*.js **/*.json",
     "test": "npx mocha -R spec"
