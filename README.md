@@ -21,7 +21,9 @@ npx license-report > ./license-report.json
 npx license-downloader --source ./license-report.json --licDir ./license-files --download
 ```
 
-The downloaded licenses and a copy of the 'license-report.json' file with properties 'licenseFileLink' added are saved to the './license-files' directory (option `--licDir`).
+A copy of the 'license-report.json' file with properties 'licenseFileLink' added is saved to the './license-files' directory (defined in option `--licDir`). The downloaded licenses are save in a subdirectory named 'licenses' in the directory defined in `--licDir`.
+
+If option `--licDir` is missing, the modified 'license-report.json' file and the 'licenses' subdirectory are written to the path of the source file.
 
 ### Usage without downloading the license files:
 ```sh
