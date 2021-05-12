@@ -73,7 +73,7 @@
       },
       {
         "filename": "README.md",
-        "updater": "tools/npm-scripts/readme-updater.js"
+        "updater": "tools/npm-scripts/readme-updater.cjs"
       }
     ]
   }
