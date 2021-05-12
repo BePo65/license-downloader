@@ -1,6 +1,6 @@
 {
   "name": "license-downloader",
-  "version": "0.3.1",
+  "version": "1.0.0",
   "description": "Download the license files of the dependencies of a project",
   "main": "index.js",
   "type": "module",
