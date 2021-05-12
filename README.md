@@ -12,7 +12,9 @@ npm install license-downloader
 
 ## Usage
 
-'license-downloader' uses the github REST API to find the location of the license files of the project (dev-) dependencies (the license file location does not depend on the package version). Optionally it downloads these files to a given directory.
+'license-downloader' uses the github REST API to find the location of the license files of the project (dev-) dependencies. The license file location does not depend on the package version. Details about how the license file is detected can be found in [licensee/licensee > What we look at](https://github.com/licensee/licensee/blob/master/docs/what-we-look-at.md) and [licensee/licensee > README](https://github.com/licensee/licensee/tree/master/docs).
+
+Optionally it downloads these files to a given directory.
 
 ### Usage with downloading the license files:
 ```sh
