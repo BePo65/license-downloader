@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/BePo65/license-downloader/compare/v1.0.0...v1.0.1) (2021-05-12)
+
+
+### Bug Fixes
+
+* add bin property to run program with npx ([43443f7](https://github.com/BePo65/license-downloader/commit/43443f7c83e2b76d9f2f8c41c43f475ff35ddb79))
+
 ## [1.0.0](https://github.com/BePo65/license-downloader/compare/v0.3.1...v1.0.0) (2021-05-12)
 
 ### [0.3.1](https://github.com/BePo65/license-downloader/compare/v0.3.0...v0.3.1) (2021-05-12)
