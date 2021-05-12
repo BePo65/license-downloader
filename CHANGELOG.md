@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.2](https://github.com/BePo65/license-downloader/compare/v1.0.1...v1.0.2) (2021-05-12)
+
+
+### Bug Fixes
+
+* index.js needs shebang for usa with npx ([415b986](https://github.com/BePo65/license-downloader/commit/415b98621c2ddb50f5d07cc3586dedf816e2c810))
+
 ### [1.0.1](https://github.com/BePo65/license-downloader/compare/v1.0.0...v1.0.1) (2021-05-12)
 
 
