@@ -5,9 +5,9 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Mocha All Files",
       "type": "node",
       "request": "launch",
-      "name": "Mocha All Files",
       "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
       "args": [
         "--timeout",
@@ -20,24 +20,24 @@
       ]
     },
     {
-        "type": "node",
-        "request": "launch",
-        "name": "Mocha Current File",
-        "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
-        "args": [
-            "--timeout",
-            "999999",
-            "--colors",
-            "${file}"
-        ],
-        "skipFiles": [
-            "<node_internals>/**/*.js"
-        ]
+      "name": "Mocha Current File",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+      "args": [
+          "--timeout",
+          "999999",
+          "--colors",
+          "${file}"
+      ],
+      "skipFiles": [
+          "<node_internals>/**/*.js"
+      ]
     },
     {
+      "name": "Launch Program",
       "type": "pwa-node",
       "request": "launch",
-      "name": "Launch Program",
       "skipFiles": [
         "<node_internals>/**"
       ],
