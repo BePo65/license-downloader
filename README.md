@@ -81,3 +81,27 @@ or in windows command line
 ```sh
 SET DEBUG=license-downloader
 ```
+
+## Development
+
+This repo uses standard-changelog to create the CHANGELOG. To ensure that the commit messages follow the standard-changelog rules, husky is used for git hooks.
+
+To initialize the git hooks after checking out the repo, run `npx husky install`.
+
+Allowed types for commit messages are:
++ build
++ ci
++ docs
++ feat
++ fix
++ perf
++ refactor
++ release
++ revert
++ style
++ test
+
+Allowed scopes are:
++ app
++ hacks
++ tools
