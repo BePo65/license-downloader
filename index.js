@@ -9,14 +9,14 @@ import util from './lib/util.js';
   try {
     const sourceFilename = config.source;
     const json = await FsService.readJson(sourceFilename);
-    await WebService.addLicenseFilePath(json, config.httpRetryOptions);
+    await WebService.addLicenseFilePath(json, config.httpRetryOptions, config.githubToken);
     const targetFilename = util.sourceToTargetFilename(sourceFilename, config.licDir);
     FsService.createDirFromFilename(targetFilename);
     await FsService.writeJson(json, targetFilename);
     if (config.download) {
       const sourceDirectory = path.dirname(sourceFilename);
       const targetDirectory = util.licenseFilesTargetFolder(config.licDir, sourceDirectory);
-      await WebService.downloadLicenseFiles(json, targetDirectory);
+      await WebService.downloadLicenseFiles(json, targetDirectory, config.httpRetryOptions, config.githubToken);
     }
   } catch (e) {
     console.error(e.message);
