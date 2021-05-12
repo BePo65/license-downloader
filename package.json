@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Download the license files of the dependencies of a project",
   "main": "index.js",
+  "bin": {
+    "license-downloader": "index.js"
+  },
   "type": "module",
   "engines": {
     "node": ">=13.2"
