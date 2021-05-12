@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.1](https://github.com/BePo65/license-downloader/compare/v0.3.0...v0.3.1) (2021-05-12)
+
+
+### Bug Fixes
+
+* convert readme-updater to commonjs file ([4a5d1dd](https://github.com/BePo65/license-downloader/commit/4a5d1dd8abd89ea8b8d52372f529cdb60fa1ac61))
+
 ## 0.3.0 (2021-05-12)
 
 
