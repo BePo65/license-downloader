@@ -3,6 +3,7 @@ process.env.NODE_ENV = 'test';
 
 import fs from 'fs';
 import path from 'path';
+import url from 'url';
 import temp from 'temp';
 
 /* eslint-disable node/no-unpublished-import */
@@ -17,6 +18,76 @@ chai.use(chaiAsPromised);
 temp.track();
 
 describe('web-service', () => {
+
+  describe('licenseFileName', () => {
+    it('should return filename', () => {
+      const fileNameComponents = WebService.licenseFileName('package');
+
+      expect(fileNameComponents.scope).to.equal('');
+      expect(fileNameComponents.packageName).to.equal('package');
+    });
+
+    it('should return scope and filename', () => {
+      const fileNameComponents = WebService.licenseFileName('@test/package-test');
+
+      expect(fileNameComponents.scope).to.equal('@test');
+      expect(fileNameComponents.packageName).to.equal('package-test');
+    });
+  });
+
+  describe('tokenFromConfigObject', () => {
+    afterEach(() => {
+      delete process.env.GITHUB_TOKEN_TEST;
+      delete process.env.GITHUB_TOKEN_TESTFILE;
+    });
+
+    it('should read github token from environment variable', () => {
+      const dummyToken = '1234567890';
+      process.env.GITHUB_TOKEN_TEST = dummyToken;
+      const result = WebService.tokenFromConfigObject({tokenEnvVar: 'GITHUB_TOKEN_TEST'});
+
+      expect(result).to.equal(dummyToken);
+    });
+
+    it('should read github token from file defined in environment variable', () => {
+      const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
+      const dummyTokenPath = path.join(__dirname, 'test-data/dummy-github-token.txt');
+      process.env.GITHUB_TOKEN_TESTFILE = dummyTokenPath;
+      const result = WebService.tokenFromConfigObject({tokenFileEnvVar: 'GITHUB_TOKEN_TESTFILE'});
+
+      expect(result).to.equal('abcdefghijklmnopqrstuvw');
+    });
+
+    it('should read github token with precedence of file over environment variable', () => {
+      const dummyToken = '1234567890';
+      process.env.GITHUB_TOKEN_TEST = dummyToken;
+      const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
+      const dummyTokenPath = path.join(__dirname, 'test-data/dummy-github-token.txt');
+      process.env.GITHUB_TOKEN_TESTFILE = dummyTokenPath;
+      const result = WebService.tokenFromConfigObject({tokenEnvVar: 'GITHUB_TOKEN_TEST', tokenFileEnvVar: 'GITHUB_TOKEN_TESTFILE'});
+
+      expect(result).to.equal('abcdefghijklmnopqrstuvw');
+    });
+
+    it('should return undefined if environment variable does not exist', () => {
+      const result = WebService.tokenFromConfigObject({tokenEnvVar: 'GITHUB_TOKEN_TEST'});
+
+      expect(result).to.be.undefined;
+    });
+
+    it('should return undefined if environment variable for file does not exist', () => {
+      const result = WebService.tokenFromConfigObject({tokenFileEnvVar: 'GITHUB_TOKEN_TESTFILE'});
+
+      expect(result).to.be.undefined;
+    });
+
+    it('should return undefined if no config is given', () => {
+      const result = WebService.tokenFromConfigObject({});
+
+      expect(result).to.be.undefined;
+    });
+  });
+
   describe('addLicenseFilePath', () => {
     it('should add link to license file for git uri', async () => {
       const packagesInfos = [
