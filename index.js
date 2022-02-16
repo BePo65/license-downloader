@@ -22,6 +22,6 @@ import util from './lib/util.js';
     }
   } catch (e) {
     console.error(e.message);
-    process.exit(1);  // eslint-disable-line no-process-exit
+    process.exit(1);  // eslint-disable-line n/no-process-exit
   }
 })();

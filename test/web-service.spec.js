@@ -6,11 +6,9 @@ import path from 'path';
 import url from 'url';
 import temp from 'temp';
 
-/* eslint-disable node/no-unpublished-import */
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import { expect } from 'chai';
-/* eslint-enable node/no-unpublished-import */
 
 import WebService from '../lib/web-service.js';
 

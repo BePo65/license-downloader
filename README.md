@@ -105,3 +105,8 @@ Allowed scopes are:
 + app
 + hacks
 + tools
+
+## Open issues
+Eslint shows an `"got" not found` error in 'lib/web-service.js'.
+
+Caused by: 'eslint-plugin-node' does not find an esm module that only has an 'export' entry in its package.json file. 'eslint-plugin-n' should solve this issue - but seems to keep this problem. Waiting for a solution.

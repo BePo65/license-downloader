@@ -5,7 +5,7 @@
     "mocha": true
   },
   "plugins": [
-    "node",
+    "n",
     "prefer-arrow",
     "jsdoc",
     "mocha",
@@ -16,7 +16,7 @@
   ],
   "extends": [
     "eslint:recommended",
-    "plugin:node/recommended",
+    "plugin:n/recommended",
     "plugin:json/recommended",
     "plugin:mocha/recommended",
     "plugin:chai-expect/recommended",
@@ -151,7 +151,7 @@
     "no-unused-vars": "error",
     "no-use-before-define": "error",
     "no-var": "error",
-    "node/no-unpublished-import": ["error", {
+    "n/no-unpublished-import": ["error", {
       "tryExtensions": [".js", ".jsx", ".mjs", ".json"]
     }],
     "nonblock-statement-body-position": [
