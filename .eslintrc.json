@@ -151,9 +151,7 @@
     "no-unused-vars": "error",
     "no-use-before-define": "error",
     "no-var": "error",
-    "n/no-unpublished-import": ["error", {
-      "tryExtensions": [".js", ".jsx", ".mjs", ".json"]
-    }],
+    "n/no-unpublished-import": "error",
     "nonblock-statement-body-position": [
       "error",
       "beside"
