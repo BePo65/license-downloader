@@ -88,7 +88,9 @@ describe('web-service', () => {
     });
   });
 
-  describe('addLicenseFilePath', () => {
+  describe('addLicenseFilePath', function() {
+    this.slow(2000);
+
     it('should add link to license file for git uri', async () => {
       const packagesInfos = [
         {
@@ -161,8 +163,10 @@ describe('web-service', () => {
     });
   });
 
-  describe('downloadLicenseFiles', () => {
+  describe('downloadLicenseFiles', function() {
     let tempDirName;
+    this.slow(800);
+
     beforeEach(() => {
       tempDirName = temp.mkdirSync();
     });
