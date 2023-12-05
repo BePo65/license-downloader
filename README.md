@@ -59,7 +59,7 @@ cd your/project/
 npx license-report > ./license-report.json
 npx license-downloader --source ./license-report.json --licDir ./license-files --githubToken.tokenFileEnvVar GITHUB_TOKEN_FILE --download
 ```
-This is the most secure variant, as access rights can be and should be set for this file to prevent unauthorized acess.
+This is the most secure variant, as access rights can be and should be set for this file to prevent unauthorized access.
 
 **use an environment variable**
 
@@ -106,7 +106,3 @@ Allowed scopes are:
 + hacks
 + tools
 
-## Open issues
-Eslint shows an `"got" not found` error in 'lib/web-service.js'.
-
-Caused by: 'eslint-plugin-node' does not find an esm module that only has an 'export' entry in its package.json file. 'eslint-plugin-n' should solve this issue - but seems to keep this problem. Waiting for a solution.
