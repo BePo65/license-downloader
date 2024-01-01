@@ -44,7 +44,7 @@
   "devDependencies": {
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-angular": "^18.4.3",
-    "chai": "^4.3.10",
+    "chai": "^5.0.0",
     "chai-as-promised": "^7.1.1",
     "eslint": "^8.56.0",
     "eslint-plugin-chai-expect": "^3.0.0",
