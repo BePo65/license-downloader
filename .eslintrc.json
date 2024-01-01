@@ -1,4 +1,5 @@
 {
+  "reportUnusedDisableDirectives": true,
   "env": {
     "es6": true,
     "node": true,
@@ -10,9 +11,7 @@
     "jsdoc",
     "mocha",
     "chai-expect",
-    "json",
-    "security",
-    "security-node"
+    "json"
   ],
   "extends": [
     "eslint:recommended",
@@ -21,7 +20,7 @@
     "plugin:mocha/recommended",
     "plugin:chai-expect/recommended",
     "plugin:jsdoc/recommended",
-    "plugin:security/recommended",
+    "plugin:security/recommended-legacy",
     "plugin:security-node/recommended"
   ],
   "parserOptions": {
