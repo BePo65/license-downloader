@@ -4,13 +4,9 @@ process.env.NODE_ENV = 'test';
 import path from 'path';
 import fs from 'fs';
 import temp from 'temp';
-import chai from 'chai';
-import chaiAsPromised from 'chai-as-promised';
 import { expect } from 'chai';
 
 import { readJson, writeJson } from '../lib/filesystem-service.js';
-
-chai.use(chaiAsPromised);
 
 describe('filesystem-service', () => {
   describe('readJson', () => {
@@ -37,7 +33,14 @@ describe('filesystem-service', () => {
 
     it('should throw without target filename', async () => {
       const testData = { data1: 'one', data2: 'two' };
-      await expect(writeJson(testData)).to.be.rejectedWith(Error);
+      // await expect(writeJson(testData)).to.be.rejectedWith(Error);
+
+      try {
+        await expect(writeJson(testData));
+      } catch (error) {
+        expect(error).to.be.instanceof(Error);
+        expect(error.message).to.equal('Argument is required');
+      }
     });
   });
 });

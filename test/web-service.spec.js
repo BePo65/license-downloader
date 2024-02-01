@@ -6,13 +6,10 @@ import path from 'path';
 import url from 'url';
 import temp from 'temp';
 
-import chai from 'chai';
-import chaiAsPromised from 'chai-as-promised';
 import { expect } from 'chai';
 
 import WebService from '../lib/web-service.js';
 
-chai.use(chaiAsPromised);
 temp.track();
 
 describe('web-service', () => {
