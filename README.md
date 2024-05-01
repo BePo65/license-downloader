@@ -108,3 +108,5 @@ Allowed scopes are:
 
 ## Hints
 `license-report` actively supports all 'supported release lines' of node.js (currently 18.x, 20.x, 21-x). As `got` now requires at least node v20.x (see [got releases](https://github.com/sindresorhus/got/releases)), we will stay with got@13.x until node v18 is no longer supports.
+
+As `eslint-plugin-chai-expect` V3.0.0 requires eslint < 8.57, eslint cannot be updated to v9, before this is fixed.

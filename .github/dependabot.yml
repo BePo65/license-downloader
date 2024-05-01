@@ -8,5 +8,5 @@ updates:
   ignore:
     - dependency-name: "got"
       versions: ["14.x"]
-    - dependency-name: "chai"
-      versions: ["5.x"]
+    - dependency-name: "eslint"
+      versions: ["9.x"]
