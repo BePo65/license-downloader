@@ -16,7 +16,7 @@
   "extends": [
     "eslint:recommended",
     "plugin:n/recommended",
-    "plugin:json/recommended",
+    "plugin:json/recommended-legacy",
     "plugin:mocha/recommended",
     "plugin:chai-expect/recommended",
     "plugin:jsdoc/recommended",

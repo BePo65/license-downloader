@@ -6,7 +6,5 @@ updates:
     interval: monthly
   open-pull-requests-limit: 10
   ignore:
-    - dependency-name: "got"
-      versions: ["14.x"]
     - dependency-name: "eslint"
       versions: ["9.x"]
