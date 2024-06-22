@@ -45,7 +45,6 @@ describe('web-service', () => {
     });
 
     it('should read github token from file defined in environment variable', () => {
-      // eslint-disable-next-line no-underscore-dangle
       const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
       const dummyTokenPath = path.join(__dirname, 'test-data/dummy-github-token.txt');
       process.env.GITHUB_TOKEN_TESTFILE = dummyTokenPath;
@@ -57,7 +56,6 @@ describe('web-service', () => {
     it('should read github token with precedence of file over environment variable', () => {
       const dummyToken = '1234567890';
       process.env.GITHUB_TOKEN_TEST = dummyToken;
-      // eslint-disable-next-line no-underscore-dangle
       const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
       const dummyTokenPath = path.join(__dirname, 'test-data/dummy-github-token.txt');
       process.env.GITHUB_TOKEN_TESTFILE = dummyTokenPath;
@@ -69,19 +67,19 @@ describe('web-service', () => {
     it('should return undefined if environment variable does not exist', () => {
       const result = WebService.tokenFromConfigObject({tokenEnvVar: 'GITHUB_TOKEN_TEST'});
 
-      expect(result).to.be.undefined;  // eslint-disable-line no-unused-expressions
+      expect(result).to.be.undefined;
     });
 
     it('should return undefined if environment variable for file does not exist', () => {
       const result = WebService.tokenFromConfigObject({tokenFileEnvVar: 'GITHUB_TOKEN_TESTFILE'});
 
-      expect(result).to.be.undefined;  // eslint-disable-line no-unused-expressions
+      expect(result).to.be.undefined;
     });
 
     it('should return undefined if no config is given', () => {
       const result = WebService.tokenFromConfigObject({});
 
-      expect(result).to.be.undefined;  // eslint-disable-line no-unused-expressions
+      expect(result).to.be.undefined;
     });
   });
 
@@ -185,7 +183,7 @@ describe('web-service', () => {
       await WebService.downloadLicenseFiles(packagesInfos, tempDirName);
 
       const fileDownloaded = fs.existsSync(path.join(tempDirName, 'debug.LICENSE.txt'));
-      expect(fileDownloaded, 'license for package downloaded').to.be.true;  // eslint-disable-line no-unused-expressions
+      expect(fileDownloaded, 'license for package downloaded').to.be.true;
     });
 
     it('should download license for scoped package', async () => {
@@ -201,7 +199,7 @@ describe('web-service', () => {
       await WebService.downloadLicenseFiles(packagesInfos, tempDirName);
 
       const fileDownloaded = fs.existsSync(path.join(tempDirName, '@bepo65', 'mat-tristate-checkbox.LICENSE.txt'));
-      expect(fileDownloaded, 'license for scoped package downloaded').to.be.true;  // eslint-disable-line no-unused-expressions
+      expect(fileDownloaded, 'license for scoped package downloaded').to.be.true;
     });
   });
 });

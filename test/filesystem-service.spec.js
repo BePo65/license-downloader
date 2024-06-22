@@ -28,7 +28,7 @@ describe('filesystem-service', () => {
       await writeJson(testData, targetFileName);
 
       const targetExists = fs.existsSync(targetFileName);
-      expect(targetExists, 'no file generated').to.be.true;  // eslint-disable-line no-unused-expressions
+      expect(targetExists, 'no file generated').to.be.true;   
     });
 
     it('should throw without target filename', async () => {
