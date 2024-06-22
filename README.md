@@ -1,5 +1,5 @@
 # license-downloader - an add-on to license-report tool
-![Version](https://img.shields.io/badge/version-1.0.11-blue.svg?cacheSeconds=2592000)
+![Version](https://img.shields.io/badge/version-1.0.12-blue.svg?cacheSeconds=2592000)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#)
 
 > Download the license files of the dependencies of a project based on the json report from the package 'license-report'.
