@@ -11,10 +11,9 @@
     "node": ">=18"
   },
   "files": [
-    "lib/config.js",
-    "lib/filesystem-service.js",
-    "lib/web-service.js",
-    "lib/util.js"
+    "index.js",
+    "lib/",
+    "CHANGELOG.md"
   ],
   "repository": {
     "type": "git",
