@@ -77,6 +77,10 @@
         "type": "json"
       },
       {
+        "filename": "package-lock.json",
+        "type": "json"
+      },
+      {
         "filename": "README.md",
         "updater": "tools/npm-scripts/readme-updater.cjs"
       }
