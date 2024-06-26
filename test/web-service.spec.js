@@ -83,6 +83,53 @@ describe('web-service', () => {
     });
   });
 
+  describe('getPackageNameFromLink', () => {
+    const testCase = (ctx, expectedName) => {
+      const res = WebService.getPackageNameFromLink(ctx?.title);
+      expect(res).to.equal(expectedName);
+    };
+
+    it('git+https://github.com/foo/bar.git', function() {
+      testCase(this.test, 'foo/bar');
+    })
+
+    it('git+https://github.com/foo/bar.git/', function() {
+      testCase(this.test, 'foo/bar');
+    })
+
+    it('git+https://github.com/foo/bar.git/tree', function() {
+      testCase(this.test, 'foo/bar');
+    })
+
+    it('https://github.com/foo/bar', function() {
+      testCase(this.test, 'foo/bar');
+    })
+
+    it('https://github.com/foo/bar/tree', function() {
+      testCase(this.test, 'foo/bar');
+    })
+
+    it('https://github.com/foo/bar.baz', function() {
+      testCase(this.test, 'foo/bar.baz');
+    })
+
+    it('https://github.com/foo/bar.baz/blob', function() {
+      testCase(this.test, 'foo/bar.baz');
+    })
+
+    it('https://other.com/foo/bar', function() {
+      testCase(this.test, '');
+    })
+
+    it('git+https://other.com/foo/bar', function() {
+      testCase(this.test, '');
+    })
+
+    it('git+https://github.com/grpc/grpc-node.git#master', function() {
+      testCase(this.test, 'grpc/grpc-node');
+    })
+  });
+
   describe('addLicenseFilePath', function() {
     this.slow(2000);
 
