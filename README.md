@@ -44,7 +44,7 @@ kessler/node-tableify: License query failed. Rate limit of 60 requests per hour 
 caolan/async: License query failed. Rate limit of 60 requests per hour exceeded. please wait 1534 seconds before trying again.
 ```
 
-To avoid this problem you can use a github personal access token to use the higher limits of your personal github plan.
+To avoid this problem you can use a github personal access token to use the higher limits of your personal github plan. As an alternative you can use fine-grained access tokens; details can be found in the github documentation for "Get the license for a repository".
 
 There are 2 possibilities:
 
