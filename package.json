@@ -1,6 +1,6 @@
 {
   "name": "license-downloader",
-  "version": "1.0.12",
+  "version": "1.1.0",
   "description": "Download the license files of the dependencies of a project",
   "main": "index.js",
   "bin": {
@@ -45,9 +45,9 @@
     "@commitlint/config-angular": "^19.3.0",
     "chai": "^5.1.1",
     "commit-and-tag-version": "^12.4.1",
-    "eslint": "^9.5.0",
+    "eslint": "^9.6.0",
     "eslint-plugin-chai-expect": "^3.1.0",
-    "eslint-plugin-jsdoc": "^48.2.12",
+    "eslint-plugin-jsdoc": "^48.5.0",
     "eslint-plugin-json": "^4.0.0",
     "eslint-plugin-mocha": "^10.4.3",
     "eslint-plugin-n": "^17.9.0",
@@ -55,7 +55,7 @@
     "eslint-plugin-security": "^3.0.1",
     "eslint-plugin-security-node": "^1.1.4",
     "husky": "^9.0.11",
-    "mocha": "^10.4.0",
+    "mocha": "^10.5.2",
     "temp": "^0.9.4"
   },
   "husky": {

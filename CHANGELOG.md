@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.1.0](https://github.com/BePo65/license-downloader/compare/v1.0.12...v1.1.0) (2024-06-30)
+
+
+### Features
+
+* add --help flag for cli to show short documentation ([cb02040](https://github.com/BePo65/license-downloader/commit/cb020408288e857f8dab5802fbbe7d192e0e0477))
+
+### Bug Fixes
+
+* fix handling of authorization
+* fix handling of packages with long package path or not ending with '.git'
+
 ## [1.0.12](https://github.com/BePo65/license-downloader/compare/v1.0.11...v1.0.12) (2024-06-22)
 
 ## [1.0.11](https://github.com/BePo65/license-downloader/compare/v1.0.10...v1.0.11) (2024-06-22)
@@ -27,7 +39,7 @@ All notable changes to this project will be documented in this file. See [commit
 
 ### Bug Fixes
 
-* index.js needs shebang for usa with npx ([415b986](https://github.com/BePo65/license-downloader/commit/415b98621c2ddb50f5d07cc3586dedf816e2c810))
+* index.js needs shebang for use with npx ([415b986](https://github.com/BePo65/license-downloader/commit/415b98621c2ddb50f5d07cc3586dedf816e2c810))
 
 ### [1.0.1](https://github.com/BePo65/license-downloader/compare/v1.0.0...v1.0.1) (2021-05-12)
 
