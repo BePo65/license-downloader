@@ -40,8 +40,8 @@ The copy of the 'license-report.json' file with properties 'licenseFileLink' add
 
 License-downloader uses the github api to collect information about the license file of a project. If the rate limit for anonymous access to this api is exceeded (60 accesses per hour) you will get warnings like this:
 ```
-the project 'kessler/node-tableify' does not contain a license file on github
-the project 'caolan/async' does not contain a license file on github
+kessler/node-tableify: License query failed. Rate limit of 60 requests per hour exceeded. please wait 1534 seconds before trying again.
+caolan/async: License query failed. Rate limit of 60 requests per hour exceeded. please wait 1534 seconds before trying again.
 ```
 
 To avoid this problem you can use a github personal access token to use the higher limits of your personal github plan.
