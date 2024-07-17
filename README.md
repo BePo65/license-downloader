@@ -63,12 +63,25 @@ This is the most secure variant, as access rights can be and should be set for t
 
 **use an environment variable**
 
-write the github token, generated in your github developer settings, to an environment variable and use the name of this environment variable in the config parameter 'githubToken.tokenEnvVar':
+Generate a github token in your github developer settings and write it to an environment variable.
+
+If the environment variable name is `GITHUB_TOKEN`, then it will be used automatically.
+If you want to use another environment variable, you can set it with the parameter `--githubToken.tokenEnvVar`.
+
+Examples:
 ```sh
 export GITHUB_TOKEN=yourgithubtoken
 cd your/project/
 npx license-report > ./license-report.json
-npx license-downloader --source ./license-report.json --licDir ./license-files --githubToken.tokenEnvVar GITHUB_TOKEN --download
+npx license-downloader --source ./license-report.json --licDir ./license-files --download
+```
+
+Or with a different environment variable name:
+```sh
+export MY_GITHUB_TOKEN=yourgithubtoken
+cd your/project/
+npx license-report > ./license-report.json
+npx license-downloader --source ./license-report.json --licDir ./license-files --githubToken.tokenEnvVar MY_GITHUB_TOKEN --download
 ```
 
 ## Show debug log
