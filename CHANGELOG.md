@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.2.0](https://github.com/BePo65/license-downloader/compare/v1.1.0...v1.2.0) (2024-09-12)
+
+
+### Features
+
+* support GITHUB_TOKEN env variable by default ([258f8e0](https://github.com/BePo65/license-downloader/commit/258f8e02c39e61cd4c3b5e85df68f068b85bea84))
+
 ## [1.1.0](https://github.com/BePo65/license-downloader/compare/v1.0.12...v1.1.0) (2024-06-30)
 
 
