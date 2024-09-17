@@ -9,67 +9,112 @@ import util from '../lib/util.js';
 describe('util', () => {
   describe('sourceToTargetFilename with root as sourceDirectory', () => {
     it('should generate target filename from absolute path', () => {
-      const target = util.sourceToTargetFilename('/sourceToTargetFilename.json', '/absolute/path/to');
-      const expectedTarget = path.join('/absolute/path/to/sourceToTargetFilename.ext.json');
+      const target = util.sourceToTargetFilename(
+        '/sourceToTargetFilename.json',
+        '/absolute/path/to',
+      );
+      const expectedTarget = path.join(
+        '/absolute/path/to/sourceToTargetFilename.ext.json',
+      );
 
       expect(target).to.equal(expectedTarget);
     });
 
     it('should generate target filename from relative path', () => {
-      const target = util.sourceToTargetFilename('/sourceToTargetFilename.json', 'relative/path/to');
-      const expectedTarget = path.join('relative/path/to/sourceToTargetFilename.ext.json');
+      const target = util.sourceToTargetFilename(
+        '/sourceToTargetFilename.json',
+        'relative/path/to',
+      );
+      const expectedTarget = path.join(
+        'relative/path/to/sourceToTargetFilename.ext.json',
+      );
 
       expect(target).to.equal(expectedTarget);
     });
 
     it('should throw generating target filename from empty string', () => {
-      const generateFilenameFromEMptyString = () => { util.sourceToTargetFilename('', 'relative/path/to'); };
+      const generateFilenameFromEMptyString = () => {
+        util.sourceToTargetFilename('', 'relative/path/to');
+      };
 
-      expect(generateFilenameFromEMptyString, 'Generating target filename with empty sorce filename should throw').to.throw();
+      expect(
+        generateFilenameFromEMptyString,
+        'Generating target filename with empty sorce filename should throw',
+      ).to.throw();
     });
   });
 
   describe('sourceToTargetFilename without targetDirectory', () => {
     it('should generate target filename from absolute path', () => {
-      const target = util.sourceToTargetFilename('/absolute/path/to/sourceToTargetFilename.json');
-      const expectedTarget = path.join('/absolute/path/to/sourceToTargetFilename.ext.json');
+      const target = util.sourceToTargetFilename(
+        '/absolute/path/to/sourceToTargetFilename.json',
+      );
+      const expectedTarget = path.join(
+        '/absolute/path/to/sourceToTargetFilename.ext.json',
+      );
 
       expect(target).to.equal(expectedTarget);
     });
 
     it('should generate target filename from relative path', () => {
-      const target = util.sourceToTargetFilename('relative/path/to/sourceToTargetFilename.json');
-      const expectedTarget = path.join('relative/path/to/sourceToTargetFilename.ext.json');
+      const target = util.sourceToTargetFilename(
+        'relative/path/to/sourceToTargetFilename.json',
+      );
+      const expectedTarget = path.join(
+        'relative/path/to/sourceToTargetFilename.ext.json',
+      );
 
       expect(target).to.equal(expectedTarget);
     });
 
     it('should throw generating target filename from empty string', () => {
-      const generateFilenameFromEMptyString = () => { util.sourceToTargetFilename(''); };
+      const generateFilenameFromEMptyString = () => {
+        util.sourceToTargetFilename('');
+      };
 
-      expect(generateFilenameFromEMptyString, 'Generating target filename from empty string should throw').to.throw();
+      expect(
+        generateFilenameFromEMptyString,
+        'Generating target filename from empty string should throw',
+      ).to.throw();
     });
   });
 
   describe('sourceToTargetFilename with sourceDirectory and targetDirectory', () => {
     it('should generate target filename from absolute path', () => {
-      const target = util.sourceToTargetFilename('/absolute/path/to/sourceToTargetFilename.json', '/target/path');
-      const expectedTarget = path.join('/target/path', 'sourceToTargetFilename.ext.json');
+      const target = util.sourceToTargetFilename(
+        '/absolute/path/to/sourceToTargetFilename.json',
+        '/target/path',
+      );
+      const expectedTarget = path.join(
+        '/target/path',
+        'sourceToTargetFilename.ext.json',
+      );
 
       expect(target).to.equal(expectedTarget);
     });
 
     it('should generate target filename from relative path', () => {
-      const target = util.sourceToTargetFilename('relative/path/to/sourceToTargetFilename.json', 'target/path');
-      const expectedTarget = path.join('target/path', 'sourceToTargetFilename.ext.json');
+      const target = util.sourceToTargetFilename(
+        'relative/path/to/sourceToTargetFilename.json',
+        'target/path',
+      );
+      const expectedTarget = path.join(
+        'target/path',
+        'sourceToTargetFilename.ext.json',
+      );
 
       expect(target).to.equal(expectedTarget);
     });
 
     it('should throw generating target filename from empty string', () => {
-      const generateFilenameFromEMptyString = () => { util.sourceToTargetFilename('', ''); };
+      const generateFilenameFromEMptyString = () => {
+        util.sourceToTargetFilename('', '');
+      };
 
-      expect(generateFilenameFromEMptyString, 'Generating target filename from empty strings should throw').to.throw();
+      expect(
+        generateFilenameFromEMptyString,
+        'Generating target filename from empty strings should throw',
+      ).to.throw();
     });
   });
 

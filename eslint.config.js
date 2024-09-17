@@ -13,13 +13,8 @@ import pluginSecurityNode from 'eslint-plugin-security-node';
 
 export default [
   {
-    ignores: [
-      '**/.vscode/',
-      '.nyc_output/',
-      'coverage/',
-      'test/test-data'
-    ],
-  }, 
+    ignores: ['**/.vscode/', '.nyc_output/', 'coverage/', 'test/test-data'],
+  },
   pluginJs.configs.recommended,
   pluginJsdoc.configs['flat/recommended'],
   pluginMocha.configs.flat.recommended,
@@ -36,7 +31,7 @@ export default [
     },
     plugins: {
       preferArrow: pluginPreferArrow,
-      'security-node': pluginSecurityNode
+      'security-node': pluginSecurityNode,
     },
     rules: {
       'mocha/no-mocha-arrows': 'off',
@@ -44,14 +39,14 @@ export default [
       'preferArrow/prefer-arrow-functions': [
         'warn',
         {
-          'disallowPrototype': true,
-          'singleReturnOnly': false,
-          'classPropertiesAllowed': false
-        }
+          disallowPrototype: true,
+          singleReturnOnly: false,
+          classPropertiesAllowed: false,
+        },
       ],
       ...pluginSecurityNode.configs.recommended.rules,
       // disable redundant check (already exists as security/detect-possible-timing-attacks)
-      'security-node/detect-possible-timing-attacks': 'off'
+      'security-node/detect-possible-timing-attacks': 'off',
     },
   },
   {

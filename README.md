@@ -1,4 +1,5 @@
 # license-downloader - an add-on to license-report tool
+
 ![Version](https://img.shields.io/badge/version-1.2.0-blue.svg?cacheSeconds=2592000)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#)
 
@@ -17,6 +18,7 @@ npm install license-downloader
 Optionally it downloads these files to a given directory.
 
 ### Usage with downloading the license files:
+
 ```sh
 cd your/project/
 npx license-report > ./license-report.json
@@ -28,6 +30,7 @@ A copy of the 'license-report.json' file with properties 'licenseFileLink' added
 If option `--licDir` is missing, the modified 'license-report.json' file and the 'licenses' subdirectory are written to the path of the source file.
 
 ### Usage without downloading the license files:
+
 ```sh
 cd your/project/
 npx license-report > ./license-report.json
@@ -39,6 +42,7 @@ The copy of the 'license-report.json' file with properties 'licenseFileLink' add
 ## Authorization in GitHub
 
 License-downloader uses the github api to collect information about the license file of a project. If the rate limit for anonymous access to this api is exceeded (60 accesses per hour) you will get warnings like this:
+
 ```
 kessler/node-tableify: License query failed. Rate limit of 60 requests per hour exceeded. please wait 1534 seconds before trying again.
 caolan/async: License query failed. Rate limit of 60 requests per hour exceeded. please wait 1534 seconds before trying again.
@@ -53,12 +57,14 @@ There are 2 possibilities:
 write the github token, generated in your github developer settings, to a file.
 
 The full path to this file is written to an environment variable and the name of this environment variable is set in the config parameter 'githubToken.tokenFileEnvVar':
+
 ```sh
 export GITHUB_TOKEN_FILE=/run/secrets/github_pat.txt
 cd your/project/
 npx license-report > ./license-report.json
 npx license-downloader --source ./license-report.json --licDir ./license-files --githubToken.tokenFileEnvVar GITHUB_TOKEN_FILE --download
 ```
+
 This is the most secure variant, as access rights can be and should be set for this file to prevent unauthorized access.
 
 **use an environment variable**
@@ -69,6 +75,7 @@ If the environment variable name is `GITHUB_TOKEN`, then it will be used automat
 If you want to use another environment variable, you can set it with the parameter `--githubToken.tokenEnvVar`.
 
 Examples:
+
 ```sh
 export GITHUB_TOKEN=yourgithubtoken
 cd your/project/
@@ -77,6 +84,7 @@ npx license-downloader --source ./license-report.json --licDir ./license-files -
 ```
 
 Or with a different environment variable name:
+
 ```sh
 export MY_GITHUB_TOKEN=yourgithubtoken
 cd your/project/
@@ -87,10 +95,13 @@ npx license-downloader --source ./license-report.json --licDir ./license-files -
 ## Show debug log
 
 Use in linux shell
+
 ```sh
 export DEBUG=license-downloader
 ```
+
 or in windows command line
+
 ```sh
 SET DEBUG=license-downloader
 ```
@@ -102,19 +113,21 @@ This repo uses standard-changelog to create the CHANGELOG. To ensure that the co
 To initialize the git hooks after checking out the repo, run `npx husky install`.
 
 Allowed types for commit messages are:
-+ build
-+ ci
-+ docs
-+ feat
-+ fix
-+ perf
-+ refactor
-+ release
-+ revert
-+ style
-+ test
+
+- build
+- ci
+- docs
+- feat
+- fix
+- perf
+- refactor
+- release
+- revert
+- style
+- test
 
 Allowed scopes are:
-+ app
-+ hacks
-+ tools
+
+- app
+- hacks
+- tools

@@ -13,7 +13,6 @@ import WebService from '../lib/web-service.js';
 temp.track();
 
 describe('web-service', () => {
-
   describe('licenseFileName', () => {
     it('should return filename', () => {
       const fileNameComponents = WebService.licenseFileName('package');
@@ -23,7 +22,8 @@ describe('web-service', () => {
     });
 
     it('should return scope and filename', () => {
-      const fileNameComponents = WebService.licenseFileName('@test/package-test');
+      const fileNameComponents =
+        WebService.licenseFileName('@test/package-test');
 
       expect(fileNameComponents.scope).to.equal('@test');
       expect(fileNameComponents.packageName).to.equal('package-test');
@@ -39,16 +39,23 @@ describe('web-service', () => {
     it('should read github token from environment variable', () => {
       const dummyToken = '1234567890';
       process.env.GITHUB_TOKEN_TEST = dummyToken;
-      const result = WebService.tokenFromConfigObject({tokenEnvVar: 'GITHUB_TOKEN_TEST'});
+      const result = WebService.tokenFromConfigObject({
+        tokenEnvVar: 'GITHUB_TOKEN_TEST',
+      });
 
       expect(result).to.equal(dummyToken);
     });
 
     it('should read github token from file defined in environment variable', () => {
       const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
-      const dummyTokenPath = path.join(__dirname, 'test-data/dummy-github-token.txt');
+      const dummyTokenPath = path.join(
+        __dirname,
+        'test-data/dummy-github-token.txt',
+      );
       process.env.GITHUB_TOKEN_TESTFILE = dummyTokenPath;
-      const result = WebService.tokenFromConfigObject({tokenFileEnvVar: 'GITHUB_TOKEN_TESTFILE'});
+      const result = WebService.tokenFromConfigObject({
+        tokenFileEnvVar: 'GITHUB_TOKEN_TESTFILE',
+      });
 
       expect(result).to.equal('abcdefghijklmnopqrstuvw');
     });
@@ -57,21 +64,31 @@ describe('web-service', () => {
       const dummyToken = '1234567890';
       process.env.GITHUB_TOKEN_TEST = dummyToken;
       const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
-      const dummyTokenPath = path.join(__dirname, 'test-data/dummy-github-token.txt');
+      const dummyTokenPath = path.join(
+        __dirname,
+        'test-data/dummy-github-token.txt',
+      );
       process.env.GITHUB_TOKEN_TESTFILE = dummyTokenPath;
-      const result = WebService.tokenFromConfigObject({tokenEnvVar: 'GITHUB_TOKEN_TEST', tokenFileEnvVar: 'GITHUB_TOKEN_TESTFILE'});
+      const result = WebService.tokenFromConfigObject({
+        tokenEnvVar: 'GITHUB_TOKEN_TEST',
+        tokenFileEnvVar: 'GITHUB_TOKEN_TESTFILE',
+      });
 
       expect(result).to.equal('abcdefghijklmnopqrstuvw');
     });
 
     it('should return undefined if environment variable does not exist', () => {
-      const result = WebService.tokenFromConfigObject({tokenEnvVar: 'GITHUB_TOKEN_TEST'});
+      const result = WebService.tokenFromConfigObject({
+        tokenEnvVar: 'GITHUB_TOKEN_TEST',
+      });
 
       expect(result).to.be.undefined;
     });
 
     it('should return undefined if environment variable for file does not exist', () => {
-      const result = WebService.tokenFromConfigObject({tokenFileEnvVar: 'GITHUB_TOKEN_TESTFILE'});
+      const result = WebService.tokenFromConfigObject({
+        tokenFileEnvVar: 'GITHUB_TOKEN_TESTFILE',
+      });
 
       expect(result).to.be.undefined;
     });
@@ -89,48 +106,48 @@ describe('web-service', () => {
       expect(res).to.equal(expectedName);
     };
 
-    it('git+https://github.com/foo/bar.git', function() {
+    it('git+https://github.com/foo/bar.git', function () {
       testCase(this.test, 'foo/bar');
-    })
+    });
 
-    it('git+https://github.com/foo/bar.git/', function() {
+    it('git+https://github.com/foo/bar.git/', function () {
       testCase(this.test, 'foo/bar');
-    })
+    });
 
-    it('git+https://github.com/foo/bar.git/tree', function() {
+    it('git+https://github.com/foo/bar.git/tree', function () {
       testCase(this.test, 'foo/bar');
-    })
+    });
 
-    it('https://github.com/foo/bar', function() {
+    it('https://github.com/foo/bar', function () {
       testCase(this.test, 'foo/bar');
-    })
+    });
 
-    it('https://github.com/foo/bar/tree', function() {
+    it('https://github.com/foo/bar/tree', function () {
       testCase(this.test, 'foo/bar');
-    })
+    });
 
-    it('https://github.com/foo/bar.baz', function() {
+    it('https://github.com/foo/bar.baz', function () {
       testCase(this.test, 'foo/bar.baz');
-    })
+    });
 
-    it('https://github.com/foo/bar.baz/blob', function() {
+    it('https://github.com/foo/bar.baz/blob', function () {
       testCase(this.test, 'foo/bar.baz');
-    })
+    });
 
-    it('https://other.com/foo/bar', function() {
+    it('https://other.com/foo/bar', function () {
       testCase(this.test, '');
-    })
+    });
 
-    it('git+https://other.com/foo/bar', function() {
+    it('git+https://other.com/foo/bar', function () {
       testCase(this.test, '');
-    })
+    });
 
-    it('git+https://github.com/grpc/grpc-node.git#master', function() {
+    it('git+https://github.com/grpc/grpc-node.git#master', function () {
       testCase(this.test, 'grpc/grpc-node');
-    })
+    });
   });
 
-  describe('addLicenseFilePath', function() {
+  describe('addLicenseFilePath', function () {
     this.slow(2000);
 
     it('should add link to license file for git uri', async () => {
@@ -138,17 +155,26 @@ describe('web-service', () => {
         {
           name: 'debug',
           link: 'git://github.com/visionmedia/debug.git',
-          type: 'git'
-        }
+          type: 'git',
+        },
       ];
       const httpRetryOptions = { maxAttempts: 2 };
       await WebService.addLicenseFilePath(packagesInfos, httpRetryOptions);
 
       expect(packagesInfos).to.be.an('array');
-      expect(packagesInfos.length).to.equal(1, `number of entries must be 1, but has ${packagesInfos.length}`);
+      expect(packagesInfos.length).to.equal(
+        1,
+        `number of entries must be 1, but has ${packagesInfos.length}`,
+      );
       const licenseFileLink = packagesInfos[0].licenseFileLink;
-      expect(licenseFileLink.length).to.be.above(0, 'licenseFileLink should not be empty');
-      expect(licenseFileLink).to.include('/master/LICENSE', 'licenseFileLink should end with "/master/LICENSE"');
+      expect(licenseFileLink.length).to.be.above(
+        0,
+        'licenseFileLink should not be empty',
+      );
+      expect(licenseFileLink).to.include(
+        '/master/LICENSE',
+        'licenseFileLink should end with "/master/LICENSE"',
+      );
     });
 
     it('should add link to license file for https uri', async () => {
@@ -156,17 +182,26 @@ describe('web-service', () => {
         {
           name: 'visit-values',
           link: 'https://github.com/kessler/node-visit-values',
-          type: 'https'
-        }
+          type: 'https',
+        },
       ];
       const httpRetryOptions = { maxAttempts: 2 };
       await WebService.addLicenseFilePath(packagesInfos, httpRetryOptions);
 
       expect(packagesInfos).to.be.an('array');
-      expect(packagesInfos.length).to.equal(1, `number of entries must be 1, but has ${packagesInfos.length}`);
+      expect(packagesInfos.length).to.equal(
+        1,
+        `number of entries must be 1, but has ${packagesInfos.length}`,
+      );
       const licenseFileLink = packagesInfos[0].licenseFileLink;
-      expect(licenseFileLink.length).to.be.above(0, 'licenseFileLink should not be empty');
-      expect(licenseFileLink).to.include('/master/LICENSE', 'licenseFileLink should end with "/master/LICENSE"');
+      expect(licenseFileLink.length).to.be.above(
+        0,
+        'licenseFileLink should not be empty',
+      );
+      expect(licenseFileLink).to.include(
+        '/master/LICENSE',
+        'licenseFileLink should end with "/master/LICENSE"',
+      );
     });
 
     it('should add link to license file for git+https uri', async () => {
@@ -174,17 +209,26 @@ describe('web-service', () => {
         {
           name: 'eol',
           link: 'git+https://github.com/ryanve/eol.git',
-          type: 'git+https'
-        }
+          type: 'git+https',
+        },
       ];
       const httpRetryOptions = { maxAttempts: 2 };
       await WebService.addLicenseFilePath(packagesInfos, httpRetryOptions);
 
       expect(packagesInfos).to.be.an('array');
-      expect(packagesInfos.length).to.equal(1, `number of entries must be 1, but has ${packagesInfos.length}`);
+      expect(packagesInfos.length).to.equal(
+        1,
+        `number of entries must be 1, but has ${packagesInfos.length}`,
+      );
       const licenseFileLink = packagesInfos[0].licenseFileLink;
-      expect(licenseFileLink.length).to.be.above(0, 'licenseFileLink should not be empty');
-      expect(licenseFileLink).to.include('/master/LICENSE', 'licenseFileLink should end with "/master/LICENSE"');
+      expect(licenseFileLink.length).to.be.above(
+        0,
+        'licenseFileLink should not be empty',
+      );
+      expect(licenseFileLink).to.include(
+        '/master/LICENSE',
+        'licenseFileLink should end with "/master/LICENSE"',
+      );
     });
 
     it('should add empty link to license file for object without license file', async () => {
@@ -192,20 +236,26 @@ describe('web-service', () => {
         {
           name: '@kessler/tableify',
           link: 'git+https://github.com/kessler/node-tableify.git',
-          type: 'no license file'
-        }
+          type: 'no license file',
+        },
       ];
       const httpRetryOptions = { maxAttempts: 2 };
       await WebService.addLicenseFilePath(packagesInfos, httpRetryOptions);
 
       expect(packagesInfos).to.be.an('array');
-      expect(packagesInfos.length).to.equal(1, `number of entries must be 1, but has ${packagesInfos.length}`);
+      expect(packagesInfos.length).to.equal(
+        1,
+        `number of entries must be 1, but has ${packagesInfos.length}`,
+      );
       const licenseFileLink = packagesInfos[0].licenseFileLink;
-      expect(licenseFileLink.length).to.equal(0, 'licenseFileLink should be empty');
+      expect(licenseFileLink.length).to.equal(
+        0,
+        'licenseFileLink should be empty',
+      );
     });
   });
 
-  describe('downloadLicenseFiles', function() {
+  describe('downloadLicenseFiles', function () {
     let tempDirName;
     this.slow(800);
 
@@ -223,13 +273,16 @@ describe('web-service', () => {
           name: 'debug',
           installedVersion: '4.3.1',
           link: 'git://github.com/visionmedia/debug.git',
-          licenseFileLink: 'https://raw.githubusercontent.com/visionmedia/debug/master/LICENSE'
-        }
+          licenseFileLink:
+            'https://raw.githubusercontent.com/visionmedia/debug/master/LICENSE',
+        },
       ];
 
       await WebService.downloadLicenseFiles(packagesInfos, tempDirName);
 
-      const fileDownloaded = fs.existsSync(path.join(tempDirName, 'debug.LICENSE.txt'));
+      const fileDownloaded = fs.existsSync(
+        path.join(tempDirName, 'debug.LICENSE.txt'),
+      );
       expect(fileDownloaded, 'license for package downloaded').to.be.true;
     });
 
@@ -239,14 +292,18 @@ describe('web-service', () => {
           name: '@bepo65/mat-tristate-checkbox',
           installedVersion: '3.0.0',
           link: 'git://github.com/BePo65/mat-tristate-checkbox.git',
-          licenseFileLink: 'https://raw.githubusercontent.com/bepo65/mat-tristate-checkbox/master/LICENSE'
-        }
+          licenseFileLink:
+            'https://raw.githubusercontent.com/bepo65/mat-tristate-checkbox/master/LICENSE',
+        },
       ];
 
       await WebService.downloadLicenseFiles(packagesInfos, tempDirName);
 
-      const fileDownloaded = fs.existsSync(path.join(tempDirName, '@bepo65', 'mat-tristate-checkbox.LICENSE.txt'));
-      expect(fileDownloaded, 'license for scoped package downloaded').to.be.true;
+      const fileDownloaded = fs.existsSync(
+        path.join(tempDirName, '@bepo65', 'mat-tristate-checkbox.LICENSE.txt'),
+      );
+      expect(fileDownloaded, 'license for scoped package downloaded').to.be
+        .true;
     });
   });
 });
