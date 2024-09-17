@@ -25,7 +25,8 @@
     "test": "npx mocha -R spec",
     "lint-commits": "commitlint --from d6a731d70b4f2 --to HEAD --verbose",
     "init-changelog": "commit-and-tag-version -i CHANGELOG.md --same-file --prerelease pre --first-release",
-    "release": "commit-and-tag-version -i CHANGELOG.md --same-file"
+    "release": "commit-and-tag-version -i CHANGELOG.md --same-file",
+    "prepare": "husky"
   },
   "keywords": [
     "license",
@@ -55,13 +56,13 @@
     "eslint-plugin-security": "^3.0.1",
     "eslint-plugin-security-node": "^1.1.4",
     "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
     "mocha": "^10.7.3",
+    "prettier": "^3.3.3",
     "temp": "^0.9.4"
   },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   },
   "commit-and-tag-version": {
     "packageFiles": [
