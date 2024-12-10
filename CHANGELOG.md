@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.3.1](https://github.com/BePo65/license-downloader/compare/v1.3.0...v1.3.1) (2024-12-10)
+
+### Bug Fixes
+
+- update packages to fix github dependabot security warnings ([91ff3d9](https://github.com/BePo65/license-downloader/commit/91ff3d99861db72264b7230f64cf3c7fce9461e3))
+- update packages to fix github dependabot security warnings ([f7e3ec2](https://github.com/BePo65/license-downloader/commit/f7e3ec202e0790ff79ca2088ec92d9490873a7ef))
+
 ## [1.3.0](https://github.com/BePo65/license-downloader/compare/v1.2.0...v1.3.0) (2024-09-17)
 
 ## [1.2.0](https://github.com/BePo65/license-downloader/compare/v1.1.0...v1.2.0) (2024-09-12)
