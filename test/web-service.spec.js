@@ -257,6 +257,9 @@ describe('web-service', () => {
 
   describe('downloadLicenseFiles', function () {
     let tempDirName;
+    const httpRetryOptions = { maxAttempts: 3 };
+    const authorizationOptions = { tokenEnvVar: 'GITHUB_TOKEN' };
+
     this.slow(800);
 
     beforeEach(() => {
@@ -278,7 +281,12 @@ describe('web-service', () => {
         },
       ];
 
-      await WebService.downloadLicenseFiles(packagesInfos, tempDirName);
+      await WebService.downloadLicenseFiles(
+        packagesInfos,
+        tempDirName,
+        httpRetryOptions,
+        authorizationOptions,
+      );
 
       const fileDownloaded = fs.existsSync(
         path.join(tempDirName, 'debug.LICENSE.txt'),
@@ -297,7 +305,12 @@ describe('web-service', () => {
         },
       ];
 
-      await WebService.downloadLicenseFiles(packagesInfos, tempDirName);
+      await WebService.downloadLicenseFiles(
+        packagesInfos,
+        tempDirName,
+        httpRetryOptions,
+        authorizationOptions,
+      );
 
       const fileDownloaded = fs.existsSync(
         path.join(tempDirName, '@bepo65', 'mat-tristate-checkbox.LICENSE.txt'),
