@@ -1,8 +1,9 @@
 // During the test the env variable is set to test
 process.env.NODE_ENV = 'test';
 
-import path from 'path';
-import { expect } from 'chai';
+import assert from 'node:assert/strict';
+import path from 'node:path';
+import { describe, it } from 'node:test';
 
 import util from '../lib/util.js';
 
@@ -17,7 +18,7 @@ describe('util', () => {
         '/absolute/path/to/sourceToTargetFilename.ext.json',
       );
 
-      expect(target).to.equal(expectedTarget);
+      assert.equal(target, expectedTarget);
     });
 
     it('should generate target filename from relative path', () => {
@@ -29,7 +30,7 @@ describe('util', () => {
         'relative/path/to/sourceToTargetFilename.ext.json',
       );
 
-      expect(target).to.equal(expectedTarget);
+      assert.equal(target, expectedTarget);
     });
 
     it('should throw generating target filename from empty string', () => {
@@ -37,10 +38,10 @@ describe('util', () => {
         util.sourceToTargetFilename('', 'relative/path/to');
       };
 
-      expect(
+      assert.throws(
         generateFilenameFromEMptyString,
-        'Generating target filename with empty sorce filename should throw',
-      ).to.throw();
+        'Generating target filename with empty source filename should throw',
+      );
     });
   });
 
@@ -53,7 +54,7 @@ describe('util', () => {
         '/absolute/path/to/sourceToTargetFilename.ext.json',
       );
 
-      expect(target).to.equal(expectedTarget);
+      assert.equal(target, expectedTarget);
     });
 
     it('should generate target filename from relative path', () => {
@@ -64,7 +65,7 @@ describe('util', () => {
         'relative/path/to/sourceToTargetFilename.ext.json',
       );
 
-      expect(target).to.equal(expectedTarget);
+      assert.equal(target, expectedTarget);
     });
 
     it('should throw generating target filename from empty string', () => {
@@ -72,10 +73,10 @@ describe('util', () => {
         util.sourceToTargetFilename('');
       };
 
-      expect(
+      assert.throws(
         generateFilenameFromEMptyString,
         'Generating target filename from empty string should throw',
-      ).to.throw();
+      );
     });
   });
 
@@ -90,7 +91,7 @@ describe('util', () => {
         'sourceToTargetFilename.ext.json',
       );
 
-      expect(target).to.equal(expectedTarget);
+      assert.equal(target, expectedTarget);
     });
 
     it('should generate target filename from relative path', () => {
@@ -103,7 +104,7 @@ describe('util', () => {
         'sourceToTargetFilename.ext.json',
       );
 
-      expect(target).to.equal(expectedTarget);
+      assert.equal(target, expectedTarget);
     });
 
     it('should throw generating target filename from empty string', () => {
@@ -111,10 +112,10 @@ describe('util', () => {
         util.sourceToTargetFilename('', '');
       };
 
-      expect(
+      assert.throws(
         generateFilenameFromEMptyString,
         'Generating target filename from empty strings should throw',
-      ).to.throw();
+      );
     });
   });
 
@@ -124,7 +125,7 @@ describe('util', () => {
       const sourceDir = undefined;
       const dir = util.licenseFilesTargetFolder(licenseDirectory, sourceDir);
 
-      expect(dir).to.equal(licenseDirectory);
+      assert.equal(dir, licenseDirectory);
     });
 
     it('should return folder in sourceDirectory if licenseDirectory is undefined', () => {
@@ -132,7 +133,7 @@ describe('util', () => {
       const sourceDir = '/path/of/source/json';
       const dir = util.licenseFilesTargetFolder(licenseDirectory, sourceDir);
 
-      expect(dir).to.equal(path.join(sourceDir, 'licenses'));
+      assert.equal(dir, path.join(sourceDir, 'licenses'));
     });
 
     it('should return folder "licenses" if no parameters are given', () => {
@@ -140,7 +141,7 @@ describe('util', () => {
       const sourceDir = undefined;
       const dir = util.licenseFilesTargetFolder(licenseDirectory, sourceDir);
 
-      expect(dir).to.equal('licenses');
+      assert.equal(dir, 'licenses');
     });
   });
 });

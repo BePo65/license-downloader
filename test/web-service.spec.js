@@ -1,13 +1,14 @@
 // During the test the env variable is set to test
 process.env.NODE_ENV = 'test';
 
-import fs from 'fs';
-import path from 'path';
-import url from 'url';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import { afterEach, beforeEach, describe, it } from 'node:test';
+import url from 'node:url';
 import temp from 'temp';
 
-import { expect } from 'chai';
-
+import config from '../lib/config.js';
 import WebService from '../lib/web-service.js';
 
 temp.track();
@@ -17,16 +18,16 @@ describe('web-service', () => {
     it('should return filename', () => {
       const fileNameComponents = WebService.licenseFileName('package');
 
-      expect(fileNameComponents.scope).to.equal('');
-      expect(fileNameComponents.packageName).to.equal('package');
+      assert.equal(fileNameComponents.scope, '');
+      assert.equal(fileNameComponents.packageName, 'package');
     });
 
     it('should return scope and filename', () => {
       const fileNameComponents =
         WebService.licenseFileName('@test/package-test');
 
-      expect(fileNameComponents.scope).to.equal('@test');
-      expect(fileNameComponents.packageName).to.equal('package-test');
+      assert.equal(fileNameComponents.scope, '@test');
+      assert.equal(fileNameComponents.packageName, 'package-test');
     });
   });
 
@@ -43,7 +44,7 @@ describe('web-service', () => {
         tokenEnvVar: 'GITHUB_TOKEN_TEST',
       });
 
-      expect(result).to.equal(dummyToken);
+      assert.equal(result, dummyToken);
     });
 
     it('should read github token from file defined in environment variable', () => {
@@ -57,7 +58,7 @@ describe('web-service', () => {
         tokenFileEnvVar: 'GITHUB_TOKEN_TESTFILE',
       });
 
-      expect(result).to.equal('abcdefghijklmnopqrstuvw');
+      assert.equal(result, 'abcdefghijklmnopqrstuvw');
     });
 
     it('should read github token with precedence of file over environment variable', () => {
@@ -74,7 +75,7 @@ describe('web-service', () => {
         tokenFileEnvVar: 'GITHUB_TOKEN_TESTFILE',
       });
 
-      expect(result).to.equal('abcdefghijklmnopqrstuvw');
+      assert.equal(result, 'abcdefghijklmnopqrstuvw');
     });
 
     it('should return undefined if environment variable does not exist', () => {
@@ -82,7 +83,7 @@ describe('web-service', () => {
         tokenEnvVar: 'GITHUB_TOKEN_TEST',
       });
 
-      expect(result).to.be.undefined;
+      assert.ok(result === undefined);
     });
 
     it('should return undefined if environment variable for file does not exist', () => {
@@ -90,66 +91,67 @@ describe('web-service', () => {
         tokenFileEnvVar: 'GITHUB_TOKEN_TESTFILE',
       });
 
-      expect(result).to.be.undefined;
+      assert.ok(result === undefined);
     });
 
     it('should return undefined if no config is given', () => {
       const result = WebService.tokenFromConfigObject({});
 
-      expect(result).to.be.undefined;
+      assert.ok(result === undefined);
     });
   });
 
   describe('getPackageNameFromLink', () => {
-    const testCase = (ctx, expectedName) => {
-      const res = WebService.getPackageNameFromLink(ctx?.title);
-      expect(res).to.equal(expectedName);
+    const testCase = (link, expectedName) => {
+      const res = WebService.getPackageNameFromLink(link);
+      assert.equal(res, expectedName);
     };
 
-    it('git+https://github.com/foo/bar.git', function () {
-      testCase(this.test, 'foo/bar');
+    it('git+https://github.com/foo/bar.git', () => {
+      testCase('git+https://github.com/foo/bar.git', 'foo/bar');
     });
 
-    it('git+https://github.com/foo/bar.git/', function () {
-      testCase(this.test, 'foo/bar');
+    it('git+https://github.com/foo/bar.git/', () => {
+      testCase('git+https://github.com/foo/bar.git/', 'foo/bar');
     });
 
-    it('git+https://github.com/foo/bar.git/tree', function () {
-      testCase(this.test, 'foo/bar');
+    it('git+https://github.com/foo/bar.git/tree', () => {
+      testCase('git+https://github.com/foo/bar.git/tree', 'foo/bar');
     });
 
-    it('https://github.com/foo/bar', function () {
-      testCase(this.test, 'foo/bar');
+    it('https://github.com/foo/bar', () => {
+      testCase('https://github.com/foo/bar', 'foo/bar');
     });
 
-    it('https://github.com/foo/bar/tree', function () {
-      testCase(this.test, 'foo/bar');
+    it('https://github.com/foo/bar/tree', () => {
+      testCase('https://github.com/foo/bar/tree', 'foo/bar');
     });
 
-    it('https://github.com/foo/bar.baz', function () {
-      testCase(this.test, 'foo/bar.baz');
+    it('https://github.com/foo/bar.baz', () => {
+      testCase('https://github.com/foo/bar.baz', 'foo/bar.baz');
     });
 
-    it('https://github.com/foo/bar.baz/blob', function () {
-      testCase(this.test, 'foo/bar.baz');
+    it('https://github.com/foo/bar.baz/blob', () => {
+      testCase('https://github.com/foo/bar.baz/blob', 'foo/bar.baz');
     });
 
-    it('https://other.com/foo/bar', function () {
-      testCase(this.test, '');
+    it('https://other.com/foo/bar', () => {
+      testCase('https://other.com/foo/bar', '');
     });
 
-    it('git+https://other.com/foo/bar', function () {
-      testCase(this.test, '');
+    it('git+https://other.com/foo/bar', () => {
+      testCase('git+https://other.com/foo/bar', '');
     });
 
-    it('git+https://github.com/grpc/grpc-node.git#master', function () {
-      testCase(this.test, 'grpc/grpc-node');
+    it('git+https://github.com/grpc/grpc-node.git#master', () => {
+      testCase(
+        'git+https://github.com/grpc/grpc-node.git#master',
+        'grpc/grpc-node',
+      );
     });
   });
 
-  describe('addLicenseFilePath', function () {
-    this.slow(2000);
-
+  describe('addLicenseFilePath', () => {
     it('should add link to license file for git uri', async () => {
       const packagesInfos = [
         {
@@ -159,20 +161,26 @@ describe('web-service', () => {
         },
       ];
       const httpRetryOptions = { maxAttempts: 2 };
-      await WebService.addLicenseFilePath(packagesInfos, httpRetryOptions);
+      const githubToken = config.githubToken;
+      await WebService.addLicenseFilePath(
+        packagesInfos,
+        httpRetryOptions,
+        githubToken,
+      );
 
-      expect(packagesInfos).to.be.an('array');
-      expect(packagesInfos.length).to.equal(
+      assert.ok(Array.isArray(packagesInfos));
+      assert.equal(
+        packagesInfos.length,
         1,
         `number of entries must be 1, but has ${packagesInfos.length}`,
       );
       const licenseFileLink = packagesInfos[0].licenseFileLink;
-      expect(licenseFileLink.length).to.be.above(
-        0,
+      assert.ok(
+        licenseFileLink.length > 0,
         'licenseFileLink should not be empty',
       );
-      expect(licenseFileLink).to.include(
-        '/master/LICENSE',
+      assert.ok(
+        licenseFileLink.includes('/master/LICENSE'),
         'licenseFileLink should end with "/master/LICENSE"',
       );
     });
@@ -188,18 +196,19 @@ describe('web-service', () => {
       const httpRetryOptions = { maxAttempts: 2 };
       await WebService.addLicenseFilePath(packagesInfos, httpRetryOptions);
 
-      expect(packagesInfos).to.be.an('array');
-      expect(packagesInfos.length).to.equal(
+      assert.ok(Array.isArray(packagesInfos));
+      assert.equal(
+        packagesInfos.length,
         1,
         `number of entries must be 1, but has ${packagesInfos.length}`,
       );
       const licenseFileLink = packagesInfos[0].licenseFileLink;
-      expect(licenseFileLink.length).to.be.above(
-        0,
+      assert.ok(
+        licenseFileLink.length > 0,
         'licenseFileLink should not be empty',
       );
-      expect(licenseFileLink).to.include(
-        '/master/LICENSE',
+      assert.ok(
+        licenseFileLink.includes('/master/LICENSE'),
         'licenseFileLink should end with "/master/LICENSE"',
       );
     });
@@ -215,18 +224,19 @@ describe('web-service', () => {
       const httpRetryOptions = { maxAttempts: 2 };
       await WebService.addLicenseFilePath(packagesInfos, httpRetryOptions);
 
-      expect(packagesInfos).to.be.an('array');
-      expect(packagesInfos.length).to.equal(
+      assert.ok(Array.isArray(packagesInfos));
+      assert.equal(
+        packagesInfos.length,
         1,
         `number of entries must be 1, but has ${packagesInfos.length}`,
       );
       const licenseFileLink = packagesInfos[0].licenseFileLink;
-      expect(licenseFileLink.length).to.be.above(
-        0,
+      assert.ok(
+        licenseFileLink.length > 0,
         'licenseFileLink should not be empty',
       );
-      expect(licenseFileLink).to.include(
-        '/master/LICENSE',
+      assert.ok(
+        licenseFileLink.includes('/master/LICENSE'),
         'licenseFileLink should end with "/master/LICENSE"',
       );
     });
@@ -242,25 +252,25 @@ describe('web-service', () => {
       const httpRetryOptions = { maxAttempts: 2 };
       await WebService.addLicenseFilePath(packagesInfos, httpRetryOptions);
 
-      expect(packagesInfos).to.be.an('array');
-      expect(packagesInfos.length).to.equal(
+      assert.ok(Array.isArray(packagesInfos));
+      assert.equal(
+        packagesInfos.length,
         1,
         `number of entries must be 1, but has ${packagesInfos.length}`,
       );
       const licenseFileLink = packagesInfos[0].licenseFileLink;
-      expect(licenseFileLink.length).to.equal(
+      assert.equal(
+        licenseFileLink.length,
         0,
         'licenseFileLink should be empty',
       );
     });
   });
 
-  describe('downloadLicenseFiles', function () {
+  describe('downloadLicenseFiles', () => {
     let tempDirName;
     const httpRetryOptions = { maxAttempts: 3 };
     const authorizationOptions = { tokenEnvVar: 'GITHUB_TOKEN' };
-
-    this.slow(800);
 
     beforeEach(() => {
       tempDirName = temp.mkdirSync();
@@ -291,7 +301,7 @@ describe('web-service', () => {
       const fileDownloaded = fs.existsSync(
         path.join(tempDirName, 'debug.LICENSE.txt'),
       );
-      expect(fileDownloaded, 'license for package downloaded').to.be.true;
+      assert.ok(fileDownloaded, 'license for package downloaded');
     });
 
     it('should download license for scoped package', async () => {
@@ -315,8 +325,7 @@ describe('web-service', () => {
       const fileDownloaded = fs.existsSync(
         path.join(tempDirName, '@bepo65', 'mat-tristate-checkbox.LICENSE.txt'),
       );
-      expect(fileDownloaded, 'license for scoped package downloaded').to.be
-        .true;
+      assert.ok(fileDownloaded, 'license for scoped package downloaded');
     });
   });
 });

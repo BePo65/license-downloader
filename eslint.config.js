@@ -2,10 +2,8 @@ import globals from 'globals';
 import pluginJs from '@eslint/js';
 import pluginJsdoc from 'eslint-plugin-jsdoc';
 import pluginJson from 'eslint-plugin-json';
-import pluginMocha from 'eslint-plugin-mocha';
 import pluginNode from 'eslint-plugin-n';
 import pluginPreferArrow from 'eslint-plugin-prefer-arrow';
-import pluginChaiExpect from 'eslint-plugin-chai-expect';
 import pluginSecurity from 'eslint-plugin-security';
 import pluginSecurityNode from 'eslint-plugin-security-node';
 // TODO wait for eslint-plugin-import to be usable in eslint v9; corresponding
@@ -17,16 +15,13 @@ export default [
   },
   pluginJs.configs.recommended,
   pluginJsdoc.configs['flat/recommended'],
-  pluginMocha.configs.recommended,
   pluginNode.configs['flat/recommended-module'],
-  pluginChaiExpect.configs['recommended-flat'],
   pluginSecurity.configs.recommended,
   {
     files: ['**/*.js'],
     languageOptions: {
       globals: {
         ...globals.nodeBuiltin,
-        ...globals.mocha,
       },
     },
     plugins: {
@@ -34,7 +29,10 @@ export default [
       'security-node': pluginSecurityNode,
     },
     rules: {
-      'mocha/no-mocha-arrows': 'off',
+      'n/no-unsupported-features/node-builtins': [
+        'error',
+        { ignores: ['test.describe'] },
+      ],
       'security/detect-non-literal-fs-filename': 'off',
       'preferArrow/prefer-arrow-functions': [
         'warn',
