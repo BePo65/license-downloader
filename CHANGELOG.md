@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.3.3](https://github.com/BePo65/license-downloader/compare/v1.3.2...v1.3.3) (2025-10-24)
+
+### Bug Fixes
+
+- update packages to remove security warnings ([ed33513](https://github.com/BePo65/license-downloader/commit/ed335136b83d817e8ebeb2ecd6a5baadba8e5757))
+- use "node:" in imports ([dc35d48](https://github.com/BePo65/license-downloader/commit/dc35d480f30f4508ceeae9de7c83f5a5f26c09b9))
+
 ## [1.3.2](https://github.com/BePo65/license-downloader/compare/v1.3.1...v1.3.2) (2025-05-02)
 
 ## [1.3.1](https://github.com/BePo65/license-downloader/compare/v1.3.0...v1.3.1) (2024-12-10)
