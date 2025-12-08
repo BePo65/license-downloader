@@ -37,24 +37,24 @@
   "license": "MIT",
   "dependencies": {
     "debug": "^4.4.3",
-    "got": "^14.6.0",
+    "got": "^14.6.5",
     "jsonfile": "^6.2.0",
     "rc": "^1.2.8"
   },
   "devDependencies": {
-    "@commitlint/cli": "^20.1.0",
-    "@commitlint/config-angular": "^20.0.0",
-    "commit-and-tag-version": "^12.6.0",
-    "eslint": "^9.38.0",
-    "eslint-plugin-jsdoc": "^61.1.5",
+    "@commitlint/cli": "^20.2.0",
+    "@commitlint/config-angular": "^20.2.0",
+    "commit-and-tag-version": "^12.6.1",
+    "eslint": "^9.39.1",
+    "eslint-plugin-jsdoc": "^61.5.0",
     "eslint-plugin-json": "^4.0.1",
     "eslint-plugin-n": "^17.23.1",
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "eslint-plugin-security": "^3.0.1",
     "eslint-plugin-security-node": "^1.1.4",
     "husky": "^9.1.7",
-    "lint-staged": "^16.2.6",
-    "prettier": "^3.6.2",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.7.4",
     "temp": "^0.9.4"
   },
   "lint-staged": {
