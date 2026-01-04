@@ -37,15 +37,15 @@
   "license": "MIT",
   "dependencies": {
     "debug": "^4.4.3",
-    "got": "^14.6.5",
+    "got": "^14.6.6",
     "jsonfile": "^6.2.0",
     "rc": "^1.2.8"
   },
   "devDependencies": {
-    "@commitlint/cli": "^20.2.0",
-    "@commitlint/config-angular": "^20.2.0",
+    "@commitlint/cli": "^20.3.0",
+    "@commitlint/config-angular": "^20.3.0",
     "commit-and-tag-version": "^12.6.1",
-    "eslint": "^9.39.1",
+    "eslint": "^9.39.2",
     "eslint-plugin-jsdoc": "^61.5.0",
     "eslint-plugin-json": "^4.0.1",
     "eslint-plugin-n": "^17.23.1",
