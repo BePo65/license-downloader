@@ -42,19 +42,19 @@
     "rc": "^1.2.8"
   },
   "devDependencies": {
-    "@commitlint/cli": "^20.3.0",
-    "@commitlint/config-angular": "^20.3.0",
+    "@commitlint/cli": "^20.4.1",
+    "@commitlint/config-angular": "^20.4.1",
     "commit-and-tag-version": "^12.6.1",
     "eslint": "^9.39.2",
-    "eslint-plugin-jsdoc": "^61.5.0",
+    "eslint-plugin-jsdoc": "^62.5.5",
     "eslint-plugin-json": "^4.0.1",
-    "eslint-plugin-n": "^17.23.1",
+    "eslint-plugin-n": "^17.24.0",
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "eslint-plugin-security": "^3.0.1",
     "eslint-plugin-security-node": "^1.1.4",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
-    "prettier": "^3.7.4",
+    "prettier": "^3.8.1",
     "temp": "^0.9.4"
   },
   "lint-staged": {
