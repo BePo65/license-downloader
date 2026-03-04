@@ -9,38 +9,22 @@
       "type": "node",
       "request": "launch",
       "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
-      "args": [
-        "--timeout",
-        "999999",
-        "--colors",
-        "${workspaceFolder}/test",
-      ],
-      "skipFiles": [
-        "<node_internals>/**/*.js"
-      ]
+      "args": ["--timeout", "999999", "--colors", "${workspaceFolder}/test"],
+      "skipFiles": ["<node_internals>/**/*.js"]
     },
     {
       "name": "Mocha Current File",
       "type": "node",
       "request": "launch",
       "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
-      "args": [
-          "--timeout",
-          "999999",
-          "--colors",
-          "${file}"
-      ],
-      "skipFiles": [
-          "<node_internals>/**/*.js"
-      ]
+      "args": ["--timeout", "999999", "--colors", "${file}"],
+      "skipFiles": ["<node_internals>/**/*.js"]
     },
     {
       "name": "Launch Program",
       "type": "node",
       "request": "launch",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
+      "skipFiles": ["<node_internals>/**"],
       "program": "${workspaceFolder}\\index.js",
       "args": [
         "--source",

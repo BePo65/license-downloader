@@ -14,9 +14,7 @@ describe('util', () => {
         '/sourceToTargetFilename.json',
         '/absolute/path/to',
       );
-      const expectedTarget = path.join(
-        '/absolute/path/to/sourceToTargetFilename.ext.json',
-      );
+      const expectedTarget = path.join('/absolute/path/to/sourceToTargetFilename.ext.json');
 
       assert.equal(target, expectedTarget);
     });
@@ -26,9 +24,7 @@ describe('util', () => {
         '/sourceToTargetFilename.json',
         'relative/path/to',
       );
-      const expectedTarget = path.join(
-        'relative/path/to/sourceToTargetFilename.ext.json',
-      );
+      const expectedTarget = path.join('relative/path/to/sourceToTargetFilename.ext.json');
 
       assert.equal(target, expectedTarget);
     });
@@ -47,23 +43,15 @@ describe('util', () => {
 
   describe('sourceToTargetFilename without targetDirectory', () => {
     it('should generate target filename from absolute path', () => {
-      const target = util.sourceToTargetFilename(
-        '/absolute/path/to/sourceToTargetFilename.json',
-      );
-      const expectedTarget = path.join(
-        '/absolute/path/to/sourceToTargetFilename.ext.json',
-      );
+      const target = util.sourceToTargetFilename('/absolute/path/to/sourceToTargetFilename.json');
+      const expectedTarget = path.join('/absolute/path/to/sourceToTargetFilename.ext.json');
 
       assert.equal(target, expectedTarget);
     });
 
     it('should generate target filename from relative path', () => {
-      const target = util.sourceToTargetFilename(
-        'relative/path/to/sourceToTargetFilename.json',
-      );
-      const expectedTarget = path.join(
-        'relative/path/to/sourceToTargetFilename.ext.json',
-      );
+      const target = util.sourceToTargetFilename('relative/path/to/sourceToTargetFilename.json');
+      const expectedTarget = path.join('relative/path/to/sourceToTargetFilename.ext.json');
 
       assert.equal(target, expectedTarget);
     });
@@ -86,10 +74,7 @@ describe('util', () => {
         '/absolute/path/to/sourceToTargetFilename.json',
         '/target/path',
       );
-      const expectedTarget = path.join(
-        '/target/path',
-        'sourceToTargetFilename.ext.json',
-      );
+      const expectedTarget = path.join('/target/path', 'sourceToTargetFilename.ext.json');
 
       assert.equal(target, expectedTarget);
     });
@@ -99,10 +84,7 @@ describe('util', () => {
         'relative/path/to/sourceToTargetFilename.json',
         'target/path',
       );
-      const expectedTarget = path.join(
-        'target/path',
-        'sourceToTargetFilename.ext.json',
-      );
+      const expectedTarget = path.join('target/path', 'sourceToTargetFilename.ext.json');
 
       assert.equal(target, expectedTarget);
     });

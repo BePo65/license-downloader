@@ -1,7 +1,7 @@
 // readme-updater.js
 // standard-version updater for readme files with iconified semantic version string.
 
-module.exports.readVersion = function (contents) {
+module.exports.readVersion = (contents) => {
   const versionSearchPattern =
     /(.*!\[Version]\(https:\/\/img.shields.io\/badge\/version-)(.+)(-blue\.svg.*)/is;
   const regexResult = contents.match(versionSearchPattern);
@@ -13,7 +13,7 @@ module.exports.readVersion = function (contents) {
   return version;
 };
 
-module.exports.writeVersion = function (contents, version) {
+module.exports.writeVersion = (contents, version) => {
   const versionSearchPattern =
     /(.*!\[Version]\(https:\/\/img.shields.io\/badge\/version-)(.+)(-blue\.svg.*)/is;
   const regexResult = contents.match(versionSearchPattern);

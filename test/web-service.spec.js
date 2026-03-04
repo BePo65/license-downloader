@@ -23,8 +23,7 @@ describe('web-service', () => {
     });
 
     it('should return scope and filename', () => {
-      const fileNameComponents =
-        WebService.licenseFileName('@test/package-test');
+      const fileNameComponents = WebService.licenseFileName('@test/package-test');
 
       assert.equal(fileNameComponents.scope, '@test');
       assert.equal(fileNameComponents.packageName, 'package-test');
@@ -49,10 +48,7 @@ describe('web-service', () => {
 
     it('should read github token from file defined in environment variable', () => {
       const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
-      const dummyTokenPath = path.join(
-        __dirname,
-        'test-data/dummy-github-token.txt',
-      );
+      const dummyTokenPath = path.join(__dirname, 'test-data/dummy-github-token.txt');
       process.env.GITHUB_TOKEN_TESTFILE = dummyTokenPath;
       const result = WebService.tokenFromConfigObject({
         tokenFileEnvVar: 'GITHUB_TOKEN_TESTFILE',
@@ -65,10 +61,7 @@ describe('web-service', () => {
       const dummyToken = '1234567890';
       process.env.GITHUB_TOKEN_TEST = dummyToken;
       const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
-      const dummyTokenPath = path.join(
-        __dirname,
-        'test-data/dummy-github-token.txt',
-      );
+      const dummyTokenPath = path.join(__dirname, 'test-data/dummy-github-token.txt');
       process.env.GITHUB_TOKEN_TESTFILE = dummyTokenPath;
       const result = WebService.tokenFromConfigObject({
         tokenEnvVar: 'GITHUB_TOKEN_TEST',
@@ -144,10 +137,7 @@ describe('web-service', () => {
     });
 
     it('git+https://github.com/grpc/grpc-node.git#master', () => {
-      testCase(
-        'git+https://github.com/grpc/grpc-node.git#master',
-        'grpc/grpc-node',
-      );
+      testCase('git+https://github.com/grpc/grpc-node.git#master', 'grpc/grpc-node');
     });
   });
 
@@ -162,11 +152,7 @@ describe('web-service', () => {
       ];
       const httpRetryOptions = { maxAttempts: 2 };
       const githubToken = config.githubToken;
-      await WebService.addLicenseFilePath(
-        packagesInfos,
-        httpRetryOptions,
-        githubToken,
-      );
+      await WebService.addLicenseFilePath(packagesInfos, httpRetryOptions, githubToken);
 
       assert.ok(Array.isArray(packagesInfos));
       assert.equal(
@@ -175,10 +161,7 @@ describe('web-service', () => {
         `number of entries must be 1, but has ${packagesInfos.length}`,
       );
       const licenseFileLink = packagesInfos[0].licenseFileLink;
-      assert.ok(
-        licenseFileLink.length > 0,
-        'licenseFileLink should not be empty',
-      );
+      assert.ok(licenseFileLink.length > 0, 'licenseFileLink should not be empty');
       assert.ok(
         licenseFileLink.includes('/master/LICENSE'),
         'licenseFileLink should end with "/master/LICENSE"',
@@ -203,10 +186,7 @@ describe('web-service', () => {
         `number of entries must be 1, but has ${packagesInfos.length}`,
       );
       const licenseFileLink = packagesInfos[0].licenseFileLink;
-      assert.ok(
-        licenseFileLink.length > 0,
-        'licenseFileLink should not be empty',
-      );
+      assert.ok(licenseFileLink.length > 0, 'licenseFileLink should not be empty');
       assert.ok(
         licenseFileLink.includes('/master/LICENSE'),
         'licenseFileLink should end with "/master/LICENSE"',
@@ -231,10 +211,7 @@ describe('web-service', () => {
         `number of entries must be 1, but has ${packagesInfos.length}`,
       );
       const licenseFileLink = packagesInfos[0].licenseFileLink;
-      assert.ok(
-        licenseFileLink.length > 0,
-        'licenseFileLink should not be empty',
-      );
+      assert.ok(licenseFileLink.length > 0, 'licenseFileLink should not be empty');
       assert.ok(
         licenseFileLink.includes('/master/LICENSE'),
         'licenseFileLink should end with "/master/LICENSE"',
@@ -259,11 +236,7 @@ describe('web-service', () => {
         `number of entries must be 1, but has ${packagesInfos.length}`,
       );
       const licenseFileLink = packagesInfos[0].licenseFileLink;
-      assert.equal(
-        licenseFileLink.length,
-        0,
-        'licenseFileLink should be empty',
-      );
+      assert.equal(licenseFileLink.length, 0, 'licenseFileLink should be empty');
     });
   });
 
@@ -286,8 +259,7 @@ describe('web-service', () => {
           name: 'debug',
           installedVersion: '4.3.1',
           link: 'git://github.com/visionmedia/debug.git',
-          licenseFileLink:
-            'https://raw.githubusercontent.com/visionmedia/debug/master/LICENSE',
+          licenseFileLink: 'https://raw.githubusercontent.com/visionmedia/debug/master/LICENSE',
         },
       ];
 
@@ -298,9 +270,7 @@ describe('web-service', () => {
         authorizationOptions,
       );
 
-      const fileDownloaded = fs.existsSync(
-        path.join(tempDirName, 'debug.LICENSE.txt'),
-      );
+      const fileDownloaded = fs.existsSync(path.join(tempDirName, 'debug.LICENSE.txt'));
       assert.ok(fileDownloaded, 'license for package downloaded');
     });
 
