@@ -1,0 +1,55 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.4.5/schema.json",
+  "vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
+  "files": { "ignoreUnknown": false },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "lineWidth": 100,
+    "bracketSameLine": true,
+    "includes": [
+      "**",
+      "!./test/fixture/*.html",
+      "!./node_modules",
+      "!**/npm-debug.log",
+      "!./.vscode"
+    ]
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "complexity": {},
+      "correctness": {},
+      "suspicious": {}
+    },
+    "includes": ["**", "!**/.vscode/", "!test/test-data"]
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single"
+    },
+    "globals": []
+  },
+  "html": {
+    "formatter": {
+      "indentScriptAndStyle": true,
+      "selfCloseVoidElements": "always"
+    }
+  },
+  "overrides": [
+    {
+      "includes": ["**/*.js"],
+      "javascript": { "globals": [] },
+      "linter": { "rules": {} }
+    },
+    {
+      "includes": ["**/*.json", "!**/.vscode/launch.json"],
+      "linter": { "rules": {} }
+    }
+  ],
+  "assist": {
+    "enabled": true,
+    "actions": { "source": { "organizeImports": "on" } }
+  }
+}
