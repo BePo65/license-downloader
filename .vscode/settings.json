@@ -1,4 +1,12 @@
 {
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.defaultFormatter": "biomejs.biome",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.biome": "explicit",
+    "source.fixAll.stylelint": "always",
+    "source.organizeImports.biome": "explicit"
+  },
   "cSpell.words": [
     "abcdefghijklmnopqrstuvw",
     "caolan",
