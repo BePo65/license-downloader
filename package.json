@@ -38,7 +38,7 @@
   "license": "MIT",
   "dependencies": {
     "debug": "^4.4.3",
-    "got": "^14.6.6",
+    "got": "^15.0.3",
     "jsonfile": "^6.2.0",
     "rc": "^1.2.8"
   },
