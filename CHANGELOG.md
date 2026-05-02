@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [2.0.0](https://github.com/BePo65/license-downloader/compare/v1.3.3...v2.0.0) (2026-05-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* requires node version >= 22
+
+### Features
+
+* set minimal node version to 22 ([779d017](https://github.com/BePo65/license-downloader/commit/779d017efe09b5f95bc48f6967aa69a7a7d038d5))
+
+
+### Bug Fixes
+
+* update packages to fix dependabot security warnings ([1222a97](https://github.com/BePo65/license-downloader/commit/1222a977bd4e294a51d39fc837fee9b9934c78af))
+* update packages to fix dependabot security warnings ([d746f3b](https://github.com/BePo65/license-downloader/commit/d746f3b1eb87c6091d857eb973ec5f6ea98d1211))
+* update packages to fix dependabot security warnings ([2c86a69](https://github.com/BePo65/license-downloader/commit/2c86a696a641f03a256afcacba7cc4ca57818620))
+* update packages to fix github dependabot security warnings ([2c97082](https://github.com/BePo65/license-downloader/commit/2c97082d5ac99d0b9f9fab840f3d2f614a8536f7))
+
 ## [1.3.3](https://github.com/BePo65/license-downloader/compare/v1.3.2...v1.3.3) (2025-10-24)
 
 ### Bug Fixes
