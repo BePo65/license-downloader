@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [2.0.1](https://github.com/BePo65/license-downloader/compare/v2.0.0...v2.0.1) (2026-10-09)
+
 ## [2.0.0](https://github.com/BePo65/license-downloader/compare/v1.3.3...v2.0.0) (2026-05-02)
 
 
