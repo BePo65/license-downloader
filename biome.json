@@ -18,7 +18,8 @@
       "!./test/fixture/*.html",
       "!./node_modules",
       "!**/npm-debug.log",
-      "!./.vscode"
+      "!./.vscode",
+      "!CHANGELOG.md"
     ]
   },
   "linter": {
@@ -59,6 +60,14 @@
         "parser": {
           "allowComments": true,
           "allowTrailingCommas": true
+        }
+      }
+    },
+    {
+      "includes": ["**/*.yml", "**/*.yaml"],
+      "yaml": {
+        "formatter": {
+          "quoteStyle": "single"
         }
       }
     }
